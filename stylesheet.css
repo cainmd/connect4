@@ -1,0 +1,71 @@
+form{
+    border-width: 10px;
+    border-style: groove; 
+    border-color: #ffd800;
+    background-color: #ffd800;
+    width: 380px;
+    height:  400px;
+    position: relative;
+    left: 35%;
+    text-align: justify;
+}
+
+div {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    
+    //background-color: #FF9C5B;
+    display: block;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-bottom: -25px;
+    margin-top: 0px;
+    
+    
+    //style="display: block" style="color: white"
+}
+
+.black {
+    background-color: #000;
+    display:  inline-block;
+    z-index: 1
+}
+
+.pink {
+    background-color: #e5f771;
+    display:  inline-block;
+    z-index: 1
+    
+}
+
+.red{
+    background-color: #f00;
+    display:  inline-block;
+    z-index: 1
+    
+}
+
+#popup {
+ /*
+    This class is used for the lightbox effect.
+ */
+ position: absolute;
+ width: 50%;
+ left: 35%;
+ text-align: center;
+ font-family: 'Baskerville Old Face';
+ font-size: xx-large;
+ display: none;
+ 
+    /*
+  z-index: 1;
+
+  height: 400px;
+  font-size: large;
+  width: 44%;
+  display: none;
+  border: 3px solid gold;
+        */
+}
+
