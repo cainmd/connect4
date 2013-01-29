@@ -1,8 +1,12 @@
 //var $ = window.jQuery;
-var currentColor = "Black";
+var currentColor = "none";
+//var currentPlay = "none";
+var game = "none";
 
-
-
+var ticLoc = [[0, 0, 0, 0],
+[0, 0, 0, 0],
+[0, 0, 0, 0],
+[0,0,0,0]];
 var divFall = [];
 for (var i = 0; i < 6;i++ ){
     
@@ -13,38 +17,76 @@ for (var i = 0; i < 6;i++ ){
 //var help = [idg('1,1'),idg('1,2'),idg('1,3'),idg('1,4'),idg('1,5'), idg('1,6'), idg('1,7')];
 
 $(document).ready(function () {
-
-
-
-    $('div').mouseenter(function () {
-        $(this).fadeTo('fast', 0.5);
-        //$('#A1-2').removeClass('pink');
-        //$('#A1-2').addClass('black');
-
+    $('#connect4').click(function () {
+        game = "connect4";
+        currentColor ="Black"
+        //document.getElementById('connect4Form').style.display = 'block';
+        $('#connect4Form').fadeTo('slow', 1);
+        reset();
     });
-    $('div').mouseleave(function () {
-        $(this).fadeTo('fast', 1);
 
+    $('#tictactoe').click(function () {
+        game = "tictactoe";
+        currentColor = "X"
+        $('#tictactoeForm').fadeTo('slow', 1);
+        reset();
     });
-    $('div').click(function () {
-        if (currentColor == "Black") {
-            var p = fallTo(this.id);
+    $('#reset').click(function () {
 
-            $(p).removeClass('pink');
-            $(p).addClass('black');
-            //alert(p)
-            checkWin(p);
-            toggleColor();
-        }
-        else {
-            var p = fallTo(this.id)
-
-            $(p).removeClass('pink');
-            $(p).addClass('red');
-            checkWin(p);
-            toggleColor();
-        }
+        reset();
     });
+
+
+   
+        $('div').mouseenter(function () {
+            $(this).fadeTo('fast', 0.5);
+            //$('#A1-2').removeClass('pink');
+            //$('#A1-2').addClass('black');
+
+        });
+        $('div').mouseleave(function () {
+            $(this).fadeTo('fast', 1);
+
+        });
+        $('div').click(function () {
+            if (currentColor == "Black") {
+                var p = fallTo(this.id);
+
+                $(p).removeClass('pink');
+                $(p).addClass('black');
+                //alert(p)
+                checkWin(p);
+                toggleColor();
+            }
+            else if (currentColor == "Red") {
+                var p = fallTo(this.id)
+
+                $(p).removeClass('pink');
+                $(p).addClass('red');
+                checkWin(p);
+                toggleColor();
+            }
+            else if (currentColor == "X"){
+              
+
+                $(this).removeClass('blank');
+                $(this).addClass('X');
+                checkTic(this.id);
+                togglePlay();
+            }
+            else {
+                $(this).removeClass('blank');
+                $(this).addClass('O');
+                checkTic(this.id);
+                togglePlay();
+
+            }
+        });
+    
+
+
+
+
 
 });
 
@@ -229,5 +271,112 @@ $(document).ready(function () {
         //$('#winner').img('a');
          $('#popupText').text(currentColor + " Wins");
         document.getElementById('popup').style.display = 'block';
+
+    }
+
+
+
+    function togglePlay(){
+        if (currentColor == "X") {
+            currentColor = "O";
+        }
+        else {
+            currentColor = "X";
+        }
+
+    }
+
+    function checkTic(x){
+
+
+        var y = x.toString();
+       //alert(y + " " + y.charAt(3));
+       var z;
+       var count=0;
+       var diag = 0;
+       if (currentColor == "X"){
+           z = 1;
+       }
+       else {z=2};
+            
+            if (currentColor == "X"){
+            ticLoc [parseInt(x.charAt(1))][parseInt(x.charAt(3))] = 1;
+            
+            }
+            else {
+                ticLoc [parseInt(x.charAt(1))][parseInt(x.charAt(3))] = 2;
+            }
+       
+            for (i = 0; i <=3; i++){
+                for (l=0; l<=3; l++){
+                    if (ticLoc[i][l] == z) {
+                        count ++;
+                    }
+                    else if (count == 3){
+                    youWin();
+                    }
+                    else { count = 0; }
+                }
+
+            }
+            count = 0;
+            for (i = 0; i <=3; i++){
+                for (l=0; l<=3; l++){
+                    if (ticLoc[l][i] == z) {
+                        count ++;
+                    }
+                    else if (count == 3){
+                    youWin();
+                    }
+                    else { count = 0; }
+                }
+
+            };
+            diag = 0;
+            count = 0;
+            for (i = 0; i <=3; i++){
+                
+                    if (ticLoc[i][diag] == z) {
+                        count ++;
+                    }
+                    else if (count == 3){
+                    youWin();
+                    }
+                    else { count = 0; }
+                    diag += 1;
+                }
+
+                diag = 2;
+                count = 0;
+                 for (i = 0; i <=3; i++){
+                
+                    if (ticLoc[i][diag] == z) {
+                        count ++;
+                    }
+                    else if (count == 3){
+                    youWin();
+                    }
+                    else { count = 0; }
+                    diag --;
+                }
+                /*
+            for (i = 3; i >=0; i--){
+               
+                    if (ticLoc[i][diag] == z) {
+                        count += 1;
+                    }
+                    else if (count == 3){
+                    youWin();
+                    }
+                    else { count = 0; }
+                if (i!=3){diag += 1;}
+                    
+            }
+            */
+            
+    }
+
+    function reset(){
+        
 
     }

@@ -46,6 +46,48 @@ div {
     
 }
 
+.blank{
+    height: 130px;
+    width: 122px;
+    border-radius: 0%;
+    
+    background-color: #e5f771;
+    display: inline-block;
+    z-index: 1;
+    
+}
+
+.X{
+    height: 130px;
+    width: 122px;
+    border-radius: 0%;
+    
+    background-color: #e5f771;
+    display: inline-block;
+    z-index: 1;
+    background-image: url("X.png");
+    background-size: 110px 110px;
+    background-repeat:no-repeat;
+
+background-position:center;
+}
+
+.O{
+    height: 130px;
+    width: 122px;
+    border-radius: 0%;
+    
+    background-color: #e5f771;
+    background-size: 110px 110px;
+    display: inline-block;
+    z-index: 1;
+    background-image: url("O.png");
+    background-repeat:no-repeat;
+
+background-position:center;
+    
+}
+
 #popup {
  /*
     This class is used for the lightbox effect.

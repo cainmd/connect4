@@ -8,8 +8,12 @@
         
 	</head>
 	<body>
-       
-<form>
+       <h1>Choose a game</h1>
+        <div style="display: block"></div>
+        <input type="button" value="Connect4" id ="connect4" >
+        <input type="button" value="Tic Tac Toe" id ="tictactoe" >
+        <input type="button" value="Reset" id ="reset" >
+<form style="position: absolute; top: 40%; display: none" id="connect4Form">
         <div></div>
         <div class='pink' id="A0-0"></div>
         <div class='pink' id="A0-1"></div>
@@ -64,7 +68,21 @@
         <div class='pink' id="A5-5"></div>
         <div class='pink' id="A5-6"></div>
 </form>
-
+<form id="tictactoeForm" style="display: none; background-color: #2d2424">
+    
+<div class="blank" id="A0-0"></div>
+<div class="blank" id="A0-1"></div>
+<div class="blank" id="A0-2"></div>
+    <div></div>
+<div class="blank" id="A1-0"></div>
+<div class="blank" id="A1-1"></div>
+<div class="blank" id="A1-2"></div>
+    <div></div>
+<div class="blank" id="A2-0"></div>
+<div class="blank" id="A2-1"></div>
+<div class="blank" id="A2-2"></div>
+    <div></div>
+</form>
         <div id="popup" >
             <!--<a id="popup-close" href="" class="button">Close</a> -->
             <p>
